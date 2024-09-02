@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  testmodulus:
+    build:
+      context: .
+      args:
+        USER_NAME: "anna.vitali7"
+    environment:
+      - USER_NAME=anna.vitali7
+      - VOLUME_NAME=anna.vitali7_volume
+    shm_size: 1g
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      stack:
+        soft: 67108864
+        hard: 67108864
+    volumes:
+      - "data:/home/anna.vitali7/persistent"
+      - type: tmpfs
+        target: /dev/shm
+        tmpfs:
+          size: 131072
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+          - node.labels.capabilities.npu == nvidia
+
+volumes:
+  data:
+    name: anna.vitali7_volume

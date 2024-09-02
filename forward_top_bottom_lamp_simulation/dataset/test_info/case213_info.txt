@@ -1,0 +1,3 @@
+Power_top : 122.0
+Power_bottom : 102.0
+maxC : 100.53

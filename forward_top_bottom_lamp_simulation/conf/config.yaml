@@ -1,0 +1,43 @@
+hydra:
+  job:
+    chdir: True
+  run:
+    dir: ./outputs/
+
+data_dir: ./dataset
+ckpt_path: ./checkpoints
+
+input_dim_nodes: 5
+input_dim_edges: 4
+output_dim: 2
+aggregation: sum
+hidden_dim_node_encoder: 512
+hidden_dim_edge_encoder: 512
+hidden_dim_node_decoder: 512
+
+batch_size: 1
+epochs: 150
+num_training_samples: 145
+num_validation_samples: 64
+num_test_samples: 64
+
+lr: 0.0001
+lr_decay_rate: 0.99985
+
+# performance configs
+use_apex: True
+amp: False
+jit: False
+
+# number of workers used by data loader during training.
+num_dataloader_workers: 4
+# number of workers used by dataset during pre-loading (null - auto-select).
+num_dataset_workers: null
+
+do_concat_trick: False
+num_processor_checkpoint_segments: 0
+recompute_activation: False
+
+wandb_mode: disabled
+
+checkpoint_save_freq: 50
