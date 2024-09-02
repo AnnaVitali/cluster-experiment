@@ -4,8 +4,8 @@ services:
   testmodulus:
     image: "TODO image name"
     environment:
-      - USER_NAME=anna.vitali7
-      - VOLUME_NAME=anna.vitali7_volume
+      - USER_NAME="TODO set user name"
+      - VOLUME_NAME="TODO set volume name"
     shm_size: 1g
     ulimits:
       memlock:
