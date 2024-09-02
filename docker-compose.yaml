@@ -2,10 +2,7 @@ version: '3.8'
 
 services:
   testmodulus:
-    build:
-      context: .
-      args:
-        USER_NAME: "anna.vitali7"
+    image: "TODO image name"
     environment:
       - USER_NAME=anna.vitali7
       - VOLUME_NAME=anna.vitali7_volume
@@ -18,7 +15,7 @@ services:
         soft: 67108864
         hard: 67108864
     volumes:
-      - "data:/home/anna.vitali7/persistent"
+      - "data:/home/${USER_NAME}/persistent"
       - type: tmpfs
         target: /dev/shm
         tmpfs:
@@ -32,4 +29,4 @@ services:
 
 volumes:
   data:
-    name: anna.vitali7_volume
+    name: ${VOLUME_NAME}
